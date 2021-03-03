@@ -28,10 +28,18 @@ class DaysController < ApplicationController
     end
 
     #to edit something by its id
+    #remember to make a patch request
     get '/days/:id/edit' do 
-
-
+        @day = Day.find(params[:id])
         erb :'days/edit'
+    end
+
+    patch '/days/:id' do
+        
+        @day= Day.find(params[:id])
+        @day.update(params[:day])
+        erb :'/days/show'        
+
     end
 
 

@@ -7,3 +7,4 @@ class CreateDays < ActiveRecord::Migration[5.2]
     end
   end
 end
+ 

@@ -1,12 +1,13 @@
 <h1>Edited New Day </h1>
 
-<%# action must match where the post is going to be viewed %>
-<form action="/days" method="POST">
+<%# action must not be dynamic this time but use specific id of what we want to change %>
+<form action="/days/<%=@day.id%>>" method="POST"> 
+    <input type="hidden" name="_method" value="patch">
     <label>New Day</label>
-    <input type="text" name="day">
+    <input type="text" name="day[day]" value="<%=@day.day%>">
     <br>
     <label>Workout</label>
-    <input type="text" name="workout">
+    <input type="text" name="day[workout]" value="<%=@day.workout%>">
     <br>
 
     <input type="submit">
