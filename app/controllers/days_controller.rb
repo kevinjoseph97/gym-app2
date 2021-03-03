@@ -13,27 +13,29 @@ class DaysController < ApplicationController
 
     post '/days' do 
         @day = Day.create(params)
-        binding.pry
         redirect "/days/#{@day.id}"
 
     end
 
 
     get '/days/:id' do 
-        @day = Day.find(params[:id])
-        erb :'days/show'
+        @day = Day.find_by(id: params[:id])
+        if !@day
+            redirect ('/days')
+        end
+        erb :'/days/show'
     end
 
     #to edit something by its id
     #remember to make a patch request
     get '/days/:id/edit' do 
-        @day = Day.find(params[:id])
+        @day = Day.find_by(id: params[:id])
         erb :'days/edit'
     end
 
     patch '/days/:id' do
         
-        @day= Day.find(params[:id])
+        @day= Day.find_by(id: params[:id])
         @day.update(params[:day])
         erb :'/days/show'        
 
@@ -41,7 +43,7 @@ class DaysController < ApplicationController
 
     #delete button/form make it dynamic so put an id 
     delete '/days/:id' do 
-        day= Day.find(params[:id])
+        day= Day.find_by(id: params[:id])
         day.delete
         redirect('/days')
     end
