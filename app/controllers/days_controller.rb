@@ -3,7 +3,6 @@ class DaysController < ApplicationController
 
     #to show all the days to the user 
     get '/days' do 
-        #@days = ["Sunday", "Monday", "Tuesday"]
         @days = Day.all
         erb :'days/index'
     end 
@@ -14,15 +13,13 @@ class DaysController < ApplicationController
 
     post '/days' do 
         @day = Day.create(params)
-        erb :'days/show'
+        binding.pry
+        redirect "/days/#{@day.id}"
 
     end
 
 
     get '/days/:id' do 
-        # days = [{day:"Sunday",workout:"chest", id: 1}, {day:"Monday", workout:"Legs", id: 2}, {day:"Tuesday",workout:"Arms", id: 3}]
-        # @day = days.find {|d| d[:id]== params[:id].to_i}
-
         @day = Day.find(params[:id])
         erb :'days/show'
     end
@@ -41,6 +38,16 @@ class DaysController < ApplicationController
         erb :'/days/show'        
 
     end
+
+    #delete button/form make it dynamic so put an id 
+    delete '/days/:id' do 
+        day= Day.find(params[:id])
+        day.delete
+        redirect('/days')
+    end
+
+
+
 
 
 

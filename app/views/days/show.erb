@@ -2,3 +2,10 @@
 
 
 <p><%= @day.day %> - <%= @day.workout %></p>
+
+
+<%# Delete %>
+<form action="/days/<%=@day.id%>>" method="POST"> 
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+</form>
