@@ -1,6 +1,6 @@
 require './config/environment'
 
-# use Rack::MethodOverride
-# use UsersController
-# use DaysController
+use Rack::MethodOverride
+use UsersController
+use DaysController
 run ApplicationController
