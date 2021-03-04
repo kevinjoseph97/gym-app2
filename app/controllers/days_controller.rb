@@ -21,7 +21,7 @@ class DaysController < ApplicationController
     get '/days/:id' do 
         @day = Day.find_by(id: params[:id])
         if !@day
-            redirect ('/days')
+            redirect('/days')
         end
         erb :'/days/show'
     end
@@ -30,6 +30,9 @@ class DaysController < ApplicationController
     #remember to make a patch request
     get '/days/:id/edit' do 
         @day = Day.find_by(id: params[:id])
+        if !@day
+            redirect('/days')
+        end
         erb :'days/edit'
     end
 
