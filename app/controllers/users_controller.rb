@@ -7,15 +7,19 @@ class UsersController < ApplicationController
         erb :'users/signup'
     end
 
-    post '/users' do
+    post '/signup' do
         ex = User.create(params)
-        session[:user_id] = ex.id
-     
-        redirect "/users/#{ex.id}"
+        if ex.id
+         session[:user_id] = ex.id
+         redirect "/users/#{ex.id}"
+        else
+            erb :'/users/signup'
+        end
     end
 
     get '/users/:id' do
         @user = User.find_by(id: params[:id])
+        @days = @user.days
         erb :'users/show'
     end
 
@@ -40,6 +44,12 @@ class UsersController < ApplicationController
         redirect "/login"
     end
 
+
+    get '/users' do 
+        @users = User.all
+
+        erb :'/users/index'
+    end
 
 
 end

@@ -16,16 +16,10 @@ class DaysController < ApplicationController
     #to find user logged in we can do user1 = User.find_by(session[:user_id].to_s)
     #to merge them together do user1.days<<@day
     post '/days' do 
-        # @day = Day.create(params)
-        # user = User.find_by(session[:user_id].to_s)
-        # user.days << @day
-        #option2
+        
         @day = Day.create(params)
         @day.user_id = session[:user_id]
         @day.save
-
-
-        binding.pry
         redirect "/days/#{@day.id}"
 
     end
@@ -59,9 +53,14 @@ class DaysController < ApplicationController
 
     #delete button/form make it dynamic so put an id 
     delete '/days/:id' do 
-        day= Day.find_by(id: params[:id])
-        day.delete
-        redirect('/days')
+        @day= Day.find_by(id: params[:id])
+        if @day.user_id == session[:user_id]
+          @day.delete
+          redirect('/days')
+        else
+            erb :'days/show'
+        end
+
     end
 
 

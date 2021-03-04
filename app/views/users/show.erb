@@ -1,5 +1,14 @@
 <h1>Welcome to <%= @user.username %>'s Gym Page </h1>
 
+<%# a list of all the users workout %>
+<ul>
+
+<% @days.each do |day|%>
+    <li><a href="/days/<%=day.id%>"><%=day.day%></li>
+<% end %>
+
+</ul>
 
 
-<a href="/logout">Log Out</a>
+
+

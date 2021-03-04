@@ -3,7 +3,7 @@
 <ul>
 
 <% @days.each do |day|%>
-    <li><%=day.day%></li>
+    <li><a href="/days/<%=day.id%>"><%=day.day%></li>
 <% end %>
 
 </ul>

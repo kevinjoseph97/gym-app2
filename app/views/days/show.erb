@@ -1,4 +1,4 @@
-<h1> New Day </h1>
+<h1> This is What You're Doing  </h1>
 
 
 <p><%= @day.day %> - <%= @day.workout %></p>
@@ -9,3 +9,6 @@
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete">
 </form>
+
+<%# to edit an item.. link to the edit page  %>
+<a href="/days/<%=@day.id%>/edit">Edit This Workout</a>
