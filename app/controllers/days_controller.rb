@@ -11,8 +11,21 @@ class DaysController < ApplicationController
         erb :'days/new'
     end
 
+    #this is where are creating the days
+    #to see the day created call "@day in the console"
+    #to find user logged in we can do user1 = User.find_by(session[:user_id].to_s)
+    #to merge them together do user1.days<<@day
     post '/days' do 
+        # @day = Day.create(params)
+        # user = User.find_by(session[:user_id].to_s)
+        # user.days << @day
+        #option2
         @day = Day.create(params)
+        @day.user_id = session[:user_id]
+        @day.save
+
+
+        binding.pry
         redirect "/days/#{@day.id}"
 
     end
