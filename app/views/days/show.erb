@@ -5,10 +5,13 @@
 
 
 <%# Delete %>
-<form action="/days/<%=@day.id%>>" method="POST"> 
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete">
-</form>
 
-<%# to edit an item.. link to the edit page  %>
-<a href="/days/<%=@day.id%>/edit">Edit This Workout</a>
+<%# <%if check_owner(@day)%> %>
+    <form action="/days/<%=@day.id%>>" method="POST"> 
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete">
+    </form>
+
+    <%# to edit an item.. link to the edit page  %>
+    <a href="/days/<%=@day.id%>/edit">Edit This Workout</a>
+<%# <% end %> %>

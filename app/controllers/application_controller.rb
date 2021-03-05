@@ -12,4 +12,29 @@ class ApplicationController < Sinatra::Base
         erb :homepage
     end
 
+ 
+    helpers do 
+
+      def current_user 
+        current_user = User.find_by(id: params[:id])
+      end
+
+
+      def redirect_if_not_logged_in
+      end
+
+
+      def check_owner(item)
+      end
+
+
+
+
+
+
+
+    end
+    
+
+    
 end

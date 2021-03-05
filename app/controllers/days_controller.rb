@@ -3,11 +3,13 @@ class DaysController < ApplicationController
 
     #to show all the days to the user 
     get '/days' do 
+        # redirect_if_not_logged_in 
         @days = Day.all
         erb :'days/index'
     end 
 
     get '/days/new' do 
+        # redirect_if_not_logged_in 
         erb :'days/new'
     end
 
@@ -21,11 +23,11 @@ class DaysController < ApplicationController
         @day.user_id = session[:user_id]
         @day.save
         redirect "/days/#{@day.id}"
-
     end
 
 
     get '/days/:id' do 
+        # redirect_if_not_logged_in 
         @day = Day.find_by(id: params[:id])
         if !@day
             redirect('/days')
@@ -36,6 +38,7 @@ class DaysController < ApplicationController
     #to edit something by its id
     #remember to make a patch request
     get '/days/:id/edit' do 
+        # redirect_if_not_logged_in 
         @day = Day.find_by(id: params[:id])
         if !@day
             redirect('/days')
@@ -44,15 +47,18 @@ class DaysController < ApplicationController
     end
 
     patch '/days/:id' do
-        
+        # redirect_if_not_logged_in 
         @day= Day.find_by(id: params[:id])
-        @day.update(params[:day])
-        erb :'/days/show'        
+        if @day.user_id == session[:user_id]
+            @day.update(params[:day])       
+        end
+        erb :'/days/show' 
 
     end
 
     #delete button/form make it dynamic so put an id 
     delete '/days/:id' do 
+        # redirect_if_not_logged_in 
         @day= Day.find_by(id: params[:id])
         if @day.user_id == session[:user_id]
           @day.delete
@@ -63,14 +69,5 @@ class DaysController < ApplicationController
 
     end
 
-
-
-
-
-
-
     
-
-
-
 end
