@@ -20,8 +20,8 @@ class UsersController < ApplicationController
     get '/users/:id' do
       
         @user = User.find_by(id: params[:id])
-        @day= @user.days
-        binding.pry
+        @days= @user.days
+        # binding.pry
         
         erb :'users/show'
     end

@@ -5,15 +5,15 @@
 
 <body>
 
-    <%# <%if current_user%> %>
-        <a href="/days">Overview</a>    
-        <a href="/days/new">Add A Day</a>
-        <a href="/logout">Log Out</a>
-        <a href="/users">All Users</a>
-   <%# <% else %> %>
-        <a href="/login">Log In</a>
-        <a href="/signup">Sign Up</a>
-    <%# <% end %> %>
+        <%if current_user%>
+            <a href="/days">Overview</a>    
+            <a href="/days/new">Add A Day</a>
+            <a href="/logout">Log Out</a>
+            <a href="/users">All Users</a>
+        <%else%>
+            <a href="/login">Log In</a>
+            <a href="/signup">Sign Up</a>
+        <%end%>
     <%=yield%>
 
 </body>
