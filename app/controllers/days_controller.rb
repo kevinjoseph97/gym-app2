@@ -1,12 +1,12 @@
 class DaysController < ApplicationController
 
 
-    #to show all the days to the user 
-    get '/days' do 
+    get '/days' do
         redirect_if_not_logged_in
         @days = Day.all
         erb :'days/index'
-    end 
+      end
+
 
     get '/days/new' do 
         redirect_if_not_logged_in
@@ -46,7 +46,6 @@ class DaysController < ApplicationController
     end
 
     patch '/days/:id' do
-        
         @day= Day.find_by(id: params[:id])
         if @day.user_id == session[:user_id]
             @day.update(params[:day])       
@@ -59,8 +58,9 @@ class DaysController < ApplicationController
     delete '/days/:id' do 
         @day= Day.find_by(id: params[:id])
         if @day.user_id == session[:user_id]
+
           @day.delete
-          redirect('/days')
+          redirect('/days/:id')
         else
             erb :'days/show'
         end

@@ -21,10 +21,10 @@ class UsersController < ApplicationController
         redirect_if_not_logged_in
         @user = User.find_by(id: params[:id])
         @days= @user.days
-        # binding.pry
-        
         erb :'users/show'
     end
+
+
 
     get '/login' do 
         erb :'/users/login'
@@ -51,6 +51,7 @@ class UsersController < ApplicationController
     get '/users' do 
         redirect_if_not_logged_in
         @users = User.all
+
 
         erb :'/users/index'
     end

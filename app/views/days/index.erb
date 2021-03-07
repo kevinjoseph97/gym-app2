@@ -1,9 +1,11 @@
-<h1>Here Are The Days People Are Working Out! </h1>
+<h1>Here Are What Other People Are Working Out! </h1>
 
 <ul>
 
 <% @days.each do |day|%>
-    <li><a href="/days/<%=day.id%>"><%=day.day%></li>
-<% end %>
+  
+     <li><a href="/day/<%=day.id%>"><%=day.workout%></a></li>
+  
+<% end %> 
 
-</ul>
+</ul> 

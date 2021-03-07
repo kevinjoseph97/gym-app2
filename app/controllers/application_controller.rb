@@ -8,7 +8,6 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/' do 
-      @name = "Kev"
         erb :homepage
     end
 
@@ -28,9 +27,6 @@ class ApplicationController < Sinatra::Base
       def check_owner(obj)
         obj.user == current_user
       end
-
-
-
 
 
 

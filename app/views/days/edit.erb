@@ -2,7 +2,7 @@
 
 <%# action must not be dynamic this time but use specific id of what we want to change %>
 
-<%# <%if check_owner(@day)%> %>
+<%if check_owner(@day)%> 
     <form action="/days/<%=@day.id%>>" method="POST"> 
         <input type="hidden" name="_method" value="patch">
         <label>New Day</label>
@@ -14,4 +14,4 @@
 
         <input type="submit">
     </form>
-<%# <% end %> %>
+<% end %> 

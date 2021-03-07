@@ -4,7 +4,7 @@
 <p><%= @day.day %> - <%= @day.workout %></p>
 
 
-<%# Delete %>
+<%# Delete Function %>
 <%if check_owner(@day)%>
     <form action="/days/<%=@day.id%>>" method="POST"> 
         <input type="hidden" name="_method" value="delete">
@@ -13,4 +13,5 @@
 
     <%# to edit an item.. link to the edit page  %>
     <a href="/days/<%=@day.id%>/edit">Edit This Workout</a>
+ 
 <% end %>
