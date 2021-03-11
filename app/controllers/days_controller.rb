@@ -1,19 +1,20 @@
 class DaysController < ApplicationController
 
 
+
     get '/days' do
         redirect_if_not_logged_in
-        @days = Day.all
+        @workouts = Day.all
         erb :'days/index'
-      end
+    end
 
-
+    # create a route to show the new workout form
     get '/days/new' do 
         redirect_if_not_logged_in
         erb :'days/new'
     end
 
-    #this is where are creating the days
+    #this is where are creating the day
     #to see the day created call "@day in the console"
     #to find user logged in we can do user1 = User.find_by(session[:user_id].to_s)
     #to merge them together do user1.days<<@day
@@ -24,10 +25,11 @@ class DaysController < ApplicationController
         redirect "/days/#{@day.id}"
     end
 
-
+    # create a dynamic route that has an :id placeholder to show specifc day
     get '/days/:id' do 
         redirect_if_not_logged_in
         @day = Day.find_by(id: params[:id])
+        # binding.pry
         if !@day
             redirect('/days')
         end
@@ -60,7 +62,7 @@ class DaysController < ApplicationController
         if @day.user_id == session[:user_id]
 
           @day.delete
-          redirect('/days/:id')
+          redirect('/days')
         else
             erb :'days/show'
         end

@@ -1,11 +1,12 @@
 <h1>Here Are What Other People Are Working Out! </h1>
 
 <ul>
-
-<% @days.each do |day|%>
-  
-     <li><a href="/day/<%=day.id%>"><%=day.workout%></a></li>
-  
+<%# iterate over all the workouts and display each one that users will have %>
+<% @workouts.each do |workout|%>
+     <%# use substitution tags to show %>
+     <li><%=workout.workout%></li>
 <% end %> 
-
 </ul> 
+
+
+
