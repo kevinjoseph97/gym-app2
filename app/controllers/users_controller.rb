@@ -3,15 +3,18 @@ class UsersController < ApplicationController
     get '/signup' do
         if session[:user_id]
             redirect "/users/#{session[:user_id]}"
+        else
+            erb :'users/signup'
         end
-        erb :'users/signup'
     end
 
+    #create a user , check to see if they saved and set their id to the session id
+    #redirect to their page 
     post '/signup' do
         ex = User.create(params)
         if ex.id
          session[:user_id] = ex.id
-         redirect "/users/#{ex.id}"
+         redirect "/users/#{ex.id}"#set up a get route below for this 
         else
             erb :'/users/signup'
         end
@@ -25,11 +28,12 @@ class UsersController < ApplicationController
     end
 
 
-
+    #set up post after this 
     get '/login' do 
         erb :'/users/login'
     end
 
+    #find user and see if user exists and that the password stored is same as entered
     post '/login' do 
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
@@ -41,7 +45,7 @@ class UsersController < ApplicationController
 
     end
 
-
+    #clear out the session for logout function 
     get '/logout' do 
         session.clear
         redirect "/login"

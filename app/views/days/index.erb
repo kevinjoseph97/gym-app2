@@ -2,11 +2,9 @@
 
 <ul>
 <%# iterate over all the workouts and display each one that users will have %>
+ <%# use substitution tags to show %>
 <% @workouts.each do |workout|%>
-     <%# use substitution tags to show %>
      <li><%=workout.workout%></li>
 <% end %> 
 </ul> 
-
-
 

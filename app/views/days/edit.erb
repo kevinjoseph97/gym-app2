@@ -1,7 +1,7 @@
-<h1>Edited New Day </h1>
+<h1>Gym Buddies </h1>
 
+<h2>What Do You Want To Change?</h2>
 <%# action must not be dynamic this time but use specific id of what we want to change %>
-
 <%if check_owner(@day)%> 
     <form action="/days/<%=@day.id%>>" method="POST"> 
         <input type="hidden" name="_method" value="patch">

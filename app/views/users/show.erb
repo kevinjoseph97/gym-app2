@@ -1,13 +1,14 @@
-<h1>Welcome to <%= @user.username.capitalize %>'s Gym Page </h1>
+<h1>Gym Buddies </h1>
+<h2>This is  <%= @user.username.capitalize %>'s Workouts </h2>
 
-<%# a list of all the users workout %>
+<%# a list of all the user's workout %>
 <ul>
-
 <% @days.each do |day|%>
-    <li><a href="/days/<%=day.id%>"><%=day.day%>-<%=day.workout%></li>
+    <li><a href="/days/<%=day.id%>"><%=day.day.capitalize%>-<%=day.workout.capitalize%></li>
 <% end %>
-
 </ul>
+
+
 
 
 

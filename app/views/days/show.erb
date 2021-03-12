@@ -1,7 +1,7 @@
 <h1> Gym Buddies  </h1>
 
 
-<h3>On - <%=@day.day.capitalize%> - Is Working Out - <%= @day.workout %></h3>
+<h3>On - <%=@day.day.capitalize%> - The Workout Is - <%= @day.workout %></h3>
 
 
 <%# Delete Function only to be seen if its the user that is logged in %>
@@ -10,8 +10,12 @@
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete">
     </form>
-
     <%# to edit an item.. link to the edit page  %>
-    <a href="/days/<%=@day.id%>/edit">Edit This Workout</a>
- 
+    <form action="/days/<%=@day.id%>/edit">
+        <input type="submit" value="Edit">
+    </form>
 <% end %>
+<%# back to the specifc user's page button %>
+<form>
+ <input type="button" value="Go back!" onclick="history.back()">
+</form>

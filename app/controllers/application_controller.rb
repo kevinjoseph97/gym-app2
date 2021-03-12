@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
     end
 
     #set up homepage display 
-
+    #erb is going to be a instance of our application
     get '/' do 
         erb :homepage
     end
