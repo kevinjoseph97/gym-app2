@@ -15,7 +15,9 @@ class DaysController < ApplicationController
 
    
     post '/days' do 
+        binding.pry
         @day = Day.create(params)#saves our day into the database but does not give it a user_id
+        binding.pry
         if @day.valid? == true
             @day.user_id = session[:user_id] #sets user_id to the user logged in 
             @day.save
